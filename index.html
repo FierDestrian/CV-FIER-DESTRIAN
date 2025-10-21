@@ -63,8 +63,8 @@
         
         .profile-img-container {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             margin: 0 auto 20px;
         }
         
@@ -75,38 +75,6 @@
             border: 5px solid rgba(255, 255, 255, 0.3);
             object-fit: cover;
             background: #ecf0f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #3498db;
-        }
-        
-        .change-photo-btn {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .change-photo-btn:hover {
-            background: #c0392b;
-            transform: scale(1.1);
-        }
-        
-        .file-input {
-            display: none;
         }
         
         .content {
@@ -244,13 +212,6 @@
             font-size: 0.9rem;
         }
         
-        .photo-instructions {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
         @media (max-width: 768px) {
             .content {
                 grid-template-columns: 1fr;
@@ -264,6 +225,11 @@
             .name {
                 font-size: 2rem;
             }
+            
+            .profile-img-container {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -271,17 +237,12 @@
     <div class="cv-container">
         <div class="header">
             <div class="profile-img-container">
-                <div class="profile-img" id="profileImage">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <button class="change-photo-btn" id="changePhotoBtn">
-                    <i class="fas fa-camera"></i>
-                </button>
-                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ8qVjbff1UkZsMteOIrOwhSaAsdHe0aUWa4AxxUVBMMtiewRgaETaVWcW4p88R5RC601tBvIKxzKEFWEna9PGqizPJ52RW85L5AeuZYl-ovfCdH5MLq5qdrYnB-fi4GaOIhrx0M4SbRtWJpXK5b_jzsJTOwDiD-JEJqPBZLd7s2bhXyV_tjqvi6c6Qs2L/s316/Gambar1.png" 
+                     alt="Foto Fier Destrian" 
+                     class="profile-img">
             </div>
             <h1 class="name">Fier Destrian, S.Pd.</h1>
             <p class="title">Guru Kelas & Inovator Pembelajaran Digital</p>
-            <p class="photo-instructions">Klik ikon kamera untuk mengganti foto profil</p>
         </div>
         
         <div class="content">
@@ -411,44 +372,5 @@
             <p>CV Fier Destrian, S.Pd. - Narasumber Talkshow "Learning Loss atau Learning Gain? Memaknai Kembali Hasil Belajar Pasca Pandemi"</p>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const changePhotoBtn = document.getElementById('changePhotoBtn');
-            const fileInput = document.getElementById('fileInput');
-            const profileImage = document.getElementById('profileImage');
-            
-            // Event listener untuk tombol ganti foto
-            changePhotoBtn.addEventListener('click', function() {
-                fileInput.click();
-            });
-            
-            // Event listener untuk input file
-            fileInput.addEventListener('change', function(e) {
-                if (e.target.files && e.target.files[0]) {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(e) {
-                        // Hapus ikon dan teks default
-                        profileImage.innerHTML = '';
-                        
-                        // Buat elemen gambar baru
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.alt = 'Foto Profil Fier Destrian';
-                        img.style.width = '100%';
-                        img.style.height = '100%';
-                        img.style.borderRadius = '50%';
-                        img.style.objectFit = 'cover';
-                        
-                        // Tambahkan gambar ke container
-                        profileImage.appendChild(img);
-                    }
-                    
-                    reader.readAsDataURL(e.target.files[0]);
-                }
-            });
-        });
-    </script>
 </body>
 </html>
