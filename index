@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Fier Destrian, S.Pd. - Narasumber Talkshow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71, #3498db);
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .title {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #3498db;
+        }
+        
+        .change-photo-btn {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .change-photo-btn:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .contact-item i {
+            width: 30px;
+            color: #3498db;
+            font-size: 1.1rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: #3498db;
+            border-radius: 4px;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .experience-item:last-child, .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .item-subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .item-desc {
+            font-size: 0.95rem;
+        }
+        
+        .focus-box {
+            background: linear-gradient(135deg, #e8f4fc 0%, #d1e7f5 100%);
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .focus-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .photo-instructions {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="profile-img-container">
+                <div class="profile-img" id="profileImage">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <button class="change-photo-btn" id="changePhotoBtn">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+            </div>
+            <h1 class="name">Fier Destrian, S.Pd.</h1>
+            <p class="title">Guru Kelas & Inovator Pembelajaran Digital</p>
+            <p class="photo-instructions">Klik ikon kamera untuk mengganti foto profil</p>
+        </div>
+        
+        <div class="content">
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Profil Singkat</h2>
+                    <p>Fier Destrian adalah seorang guru muda yang penuh semangat dan dedikasi, saat ini mengemban amanah sebagai Wali Kelas 6 di SDN Ciluluk 2. Dengan latar belakang Pendidikan Matematika, beliau memiliki ketertarikan yang mendalam pada pedagogi dan integrasi teknologi dalam pembelajaran.</p>
+                    <p>Sebagai guru yang akrab dengan dunia digital, Fier aktif menciptakan ruang belajar yang dinamis dan relevan bagi siswanya, termasuk dengan mengelola blog sekolah untuk memperluas akses pendidikan.</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Pendidikan & Sertifikasi</h2>
+                    <div class="education-item">
+                        <div class="item-title">S1 Pendidikan Matematika</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="item-title">Sertifikasi Halal</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-tools"></i> Keahlian Spesialis</h2>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Pedagogi Matematika SD</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Integrasi Teknologi dalam Pembelajaran</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Manajemen Kelas</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Pengelolaan Konten Digital (Blog)</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-address-card"></i> Informasi Kontak</h2>
+                    <div class="contact-item">
+                        <i class="fas fa-school"></i>
+                        <span>SDN Ciluluk 2</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Fier.destrian8@guru.sd.belajar.id</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-facebook"></i>
+                        <span>fb @fierdestrian</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <span>ig @fierdestrian</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Pengalaman & Pencapaian</h2>
+                    <div class="experience-item">
+                        <div class="item-title">Wali Kelas 6</div>
+                        <div class="item-subtitle">SDN Ciluluk 2 | 2021 - Sekarang</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="item-title">Guru Matematika & Pengelola Perpustakaan</div>
+                        <div class="item-subtitle">SDN Ciluluk 2</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="item-title">Founder & Pengelola Blog Sekolah</div>
+                        <div class="item-subtitle">sdnciluluk.blogspot.com</div>
+                        <div class="item-desc">Sebagai pusat sumber belajar dan informasi bagi siswa dan wali murid</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="item-title">Penulis Konten Edukatif</div>
+                        <div class="item-subtitle">WhatsApp Status</div>
+                        <div class="item-desc">Untuk komunikasi pembelajaran dengan orang tua/wali murid</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="item-title">Pengalaman Mengajar</div>
+                        <div class="item-subtitle">3 Tahun</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-bullhorn"></i> Fokus dalam Talkshow</h2>
+                    <div class="focus-box">
+                        <p class="focus-title">Perspektif Guru Junior dalam Menghadapi Tantangan Pendidikan Pasca Pandemi</p>
+                        <p>Dalam talkshow ini, Fier Destrian akan membawa perspektif segar seorang guru junior. Beliau akan berbagi pengalaman nyata dalam:</p>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li>Memanfaatkan teknologi sederhana (seperti blog dan media sosial) untuk memantau dan mendokumentasikan "learning gain" siswa</li>
+                            <li>Strategi berkomunikasi dengan orang tua di era digital</li>
+                            <li>Tantangan dan peluang yang dihadapi guru muda dalam memaknai hasil belajar siswa pasca pandemi</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="tag">Guru Junior</span>
+                        <span class="tag">Teknologi Pendidikan</span>
+                        <span class="tag">Pembelajaran Digital</span>
+                        <span class="tag">Komunikasi Orang Tua</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>CV Fier Destrian, S.Pd. - Narasumber Talkshow "Learning Loss atau Learning Gain? Memaknai Kembali Hasil Belajar Pasca Pandemi"</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const changePhotoBtn = document.getElementById('changePhotoBtn');
+            const fileInput = document.getElementById('fileInput');
+            const profileImage = document.getElementById('profileImage');
+            
+            // Event listener untuk tombol ganti foto
+            changePhotoBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            // Event listener untuk input file
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        // Hapus ikon dan teks default
+                        profileImage.innerHTML = '';
+                        
+                        // Buat elemen gambar baru
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.alt = 'Foto Profil Fier Destrian';
+                        img.style.width = '100%';
+                        img.style.height = '100%';
+                        img.style.borderRadius = '50%';
+                        img.style.objectFit = 'cover';
+                        
+                        // Tambahkan gambar ke container
+                        profileImage.appendChild(img);
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
